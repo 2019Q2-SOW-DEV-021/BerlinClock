@@ -1,8 +1,8 @@
 package com.channels.kata;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
@@ -27,19 +27,12 @@ class BerlinClockConverterTest {
         assertEquals("Time must be in the format HH:mm:ss", exception.getMessage());
     }
 
-    @Test
-    @DisplayName("Test For Second light Turned On When second is even number")
-    public void testBerlinClockConverterForEvenSecond() {
-        BerlinClockConverter berlinClockConverter = new BerlinClockConverter("12:11:12");
+    @ParameterizedTest
+    @DisplayName("Test For Second value for all both even and odd number input")
+    @CsvSource({"12:11:12,Y", "11:11:11,0"})
+    public void testBerlinClockConverterForEvenSecond(String digitalTime, String expectedSecondValue) {
+        BerlinClockConverter berlinClockConverter = new BerlinClockConverter(digitalTime);
 
-        assertEquals("Y", berlinClockConverter.getBerlinClock().getSecond());
-    }
-
-    @Test
-    @DisplayName("Test For Second light Turned On When second is Odd number")
-    public void testBerlinClockConverterForOddSecond() {
-        BerlinClockConverter berlinClockConverter = new BerlinClockConverter("12:11:11");
-
-        assertEquals("0", berlinClockConverter.getBerlinClock().getSecond());
+        assertEquals(expectedSecondValue, berlinClockConverter.getBerlinClock().getSecond());
     }
 }
