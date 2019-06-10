@@ -5,6 +5,7 @@ public class BerlinClock {
     private String fiveHourRow;
     private String singleHourRow;
     private String fiveMinuteRow;
+    private String singleMinuteRow;
 
     public String getSecond() {
         return second;
@@ -36,5 +37,13 @@ public class BerlinClock {
 
     public void setFiveMinuteRow(String fiveMinuteRow) {
         this.fiveMinuteRow = fiveMinuteRow;
+    }
+
+    public String getSingleMinuteRow() {
+        return singleMinuteRow;
+    }
+
+    public void setSingleMinuteRow(String singleMinuteRow) {
+        this.singleMinuteRow = singleMinuteRow;
     }
 }

@@ -1,6 +1,7 @@
 package com.channels.kata;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -55,12 +56,21 @@ class BerlinClockConverterTest {
     }
 
     @ParameterizedTest
-    @DisplayName("Test Five minute hour row value for given time")
+    @DisplayName("Test Five minute hour row value for all possible combinations")
     @CsvSource({"05:05,Y0000000000", "05:10,YY000000000", "16:16,YYR00000000", "16:22,YYRY0000000", "16:27,YYRYY000000", "16:30,YYRYYR00000", "16:35,YYRYYRY0000", "16:41,YYRYYRYY000", "16:46,YYRYYRYYR00", "16:51,YYRYYRYYRY0", "16:59,YYRYYRYYRYY"})
     public void testBerlinClockConverterForFiveMinuteRow(String digitalTime, String expectedFiveMinuteRowValue) {
         BerlinClockConverter berlinClockConverter = new BerlinClockConverter(digitalTime);
 
         assertEquals(expectedFiveMinuteRowValue, berlinClockConverter.getBerlinClock().getFiveMinuteRow());
+
+    }
+
+    @Test
+    @DisplayName("Test Single Minute row value for given time")
+    public void testBerlinClockConverterForSingleMinuteRow() {
+        BerlinClockConverter berlinClockConverter = new BerlinClockConverter("11:00");
+
+        assertEquals("0000", berlinClockConverter.getBerlinClock().getSingleMinuteRow());
 
     }
 
