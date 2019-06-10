@@ -13,6 +13,8 @@ public class BerlinClockConverter {
     public static final int MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW = 4;
     public static final String RED_LIGHT = "R";
     public static final int CONSTANT_FIVE = 5;
+    public static final String YELLOW_LIGHT = "Y";
+    public static final int MAXIMUM_NUMBER_OF_LIGHTS_IN_FIVE_MINUTE_ROW = 11;
     private BerlinClock berlinClock;
 
     public BerlinClockConverter(String digitalTime) {
@@ -22,10 +24,10 @@ public class BerlinClockConverter {
 
     private void convertDigitalTimeToBerlinTime(LocalTime parsedDigitalTime) {
         berlinClock = new BerlinClock();
-        berlinClock.setSecond((parsedDigitalTime.getSecond() % 2) == 0 ? "Y" : NO_LIGHT);
+        berlinClock.setSecond((parsedDigitalTime.getSecond() % 2) == 0 ? YELLOW_LIGHT : NO_LIGHT);
         berlinClock.setFiveHourRow(generateRowValue((parsedDigitalTime.getHour() / CONSTANT_FIVE), RED_LIGHT, MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW));
         berlinClock.setSingleHourRow(generateRowValue((parsedDigitalTime.getHour() % CONSTANT_FIVE), RED_LIGHT, MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW));
-        berlinClock.setFiveMinuteRow(generateRowValue((parsedDigitalTime.getMinute() / CONSTANT_FIVE), "Y", 11));
+        berlinClock.setFiveMinuteRow(generateRowValue((parsedDigitalTime.getMinute() / CONSTANT_FIVE), YELLOW_LIGHT, MAXIMUM_NUMBER_OF_LIGHTS_IN_FIVE_MINUTE_ROW));
     }
 
     private String generateRowValue(int numberOfLightsOn, String lightColor, int maximumNoOfLightsInRow) {
