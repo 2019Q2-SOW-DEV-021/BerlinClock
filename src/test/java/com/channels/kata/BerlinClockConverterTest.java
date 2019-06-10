@@ -1,6 +1,7 @@
 package com.channels.kata;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -24,5 +25,13 @@ class BerlinClockConverterTest {
                 new BerlinClockConverter(digitalTime));
 
         assertEquals("Time must be in the format HH:mm:ss", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("Test For Second light Turned On When second is even number")
+    public void testBerlinClockConverterForEvenSecond() {
+        BerlinClockConverter berlinClockConverter = new BerlinClockConverter("12:11:12");
+
+        assertEquals("Y", berlinClockConverter.getBerlinClock().getSecond());
     }
 }
