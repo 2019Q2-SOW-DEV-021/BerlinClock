@@ -46,4 +46,19 @@ public class BerlinClock {
     public void setSingleMinuteRow(String singleMinuteRow) {
         this.singleMinuteRow = singleMinuteRow;
     }
+
+    @Override
+    public String toString() {
+        String newLine = System.getProperty("line.separator");
+        StringBuilder berlinClockBuilder = new StringBuilder(this.getSecond());
+        berlinClockBuilder.append(newLine);
+        berlinClockBuilder.append(this.getFiveHourRow());
+        berlinClockBuilder.append(newLine);
+        berlinClockBuilder.append(this.getSingleHourRow());
+        berlinClockBuilder.append(newLine);
+        berlinClockBuilder.append(this.getFiveMinuteRow());
+        berlinClockBuilder.append(newLine);
+        berlinClockBuilder.append(this.getSingleMinuteRow());
+        return berlinClockBuilder.toString();
+    }
 }
