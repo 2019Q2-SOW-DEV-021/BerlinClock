@@ -17,4 +17,13 @@ class BerlinClockConverterTest {
 
         assertEquals("Please enter valid time", exception.getMessage());
     }
+
+    @Test
+    @DisplayName("Test for invalid input value")
+    public void testBerlinClockConverterToCheckInvalidInputValue() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                new BerlinClockConverter("24:66"));
+
+        assertEquals("Time must be in the format HH:mm:ss", exception.getMessage());
+    }
 }
