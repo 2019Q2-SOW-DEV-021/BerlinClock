@@ -23,13 +23,14 @@ public class BerlinClockConverter {
     private void convertDigitalTimeToBerlinTime(LocalTime parsedDigitalTime) {
         berlinClock = new BerlinClock();
         berlinClock.setSecond((parsedDigitalTime.getSecond() % 2) == 0 ? "Y" : NO_LIGHT);
-        berlinClock.setFiveHourRow(generateHourRowValue((parsedDigitalTime.getHour() / CONSTANT_FIVE), RED_LIGHT));
-        berlinClock.setSingleHourRow(generateHourRowValue((parsedDigitalTime.getHour() % CONSTANT_FIVE), RED_LIGHT));
+        berlinClock.setFiveHourRow(generateRowValue((parsedDigitalTime.getHour() / CONSTANT_FIVE), RED_LIGHT, MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW));
+        berlinClock.setSingleHourRow(generateRowValue((parsedDigitalTime.getHour() % CONSTANT_FIVE), RED_LIGHT, MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW));
+        berlinClock.setFiveMinuteRow(generateRowValue((parsedDigitalTime.getMinute() / CONSTANT_FIVE), "Y", 11));
     }
 
-    private String generateHourRowValue(int numberOfLightsOn, String lightColor) {
+    private String generateRowValue(int numberOfLightsOn, String lightColor, int maximumNoOfLightsInRow) {
         StringBuilder hoursRowBuilder = new StringBuilder(StringUtils.repeat(lightColor, numberOfLightsOn));
-        hoursRowBuilder.append(StringUtils.repeat(NO_LIGHT, (MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW - numberOfLightsOn)));
+        hoursRowBuilder.append(StringUtils.repeat(NO_LIGHT, (maximumNoOfLightsInRow - numberOfLightsOn)));
         return hoursRowBuilder.toString();
     }
 
