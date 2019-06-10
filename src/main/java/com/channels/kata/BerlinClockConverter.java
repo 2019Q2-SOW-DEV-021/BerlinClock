@@ -27,7 +27,7 @@ public class BerlinClockConverter {
     private String generateFiveHourRowValue(LocalTime parsedDigitalTime) {
         final int numberOfHoursLightsOn = parsedDigitalTime.getHour() / 5;
         StringBuilder hoursRowBuilder = new StringBuilder(StringUtils.repeat("R", numberOfHoursLightsOn));
-        hoursRowBuilder.append(StringUtils.repeat(NO_LIGHT, MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW - numberOfHoursLightsOn));
+        hoursRowBuilder.append(StringUtils.repeat(NO_LIGHT, (MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW - numberOfHoursLightsOn)));
         return hoursRowBuilder.toString();
     }
 
