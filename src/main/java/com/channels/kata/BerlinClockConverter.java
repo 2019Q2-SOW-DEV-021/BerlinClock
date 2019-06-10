@@ -27,7 +27,7 @@ public class BerlinClockConverter {
         berlinClock.setSecond((parsedDigitalTime.getSecond() % 2) == 0 ? YELLOW_LIGHT : NO_LIGHT);
         berlinClock.setFiveHourRow(generateRowValue((parsedDigitalTime.getHour() / CONSTANT_FIVE), RED_LIGHT, MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW));
         berlinClock.setSingleHourRow(generateRowValue((parsedDigitalTime.getHour() % CONSTANT_FIVE), RED_LIGHT, MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW));
-        berlinClock.setFiveMinuteRow(generateRowValue((parsedDigitalTime.getMinute() / CONSTANT_FIVE), YELLOW_LIGHT, MAXIMUM_NUMBER_OF_LIGHTS_IN_FIVE_MINUTE_ROW));
+        berlinClock.setFiveMinuteRow(generateRowValue((parsedDigitalTime.getMinute() / CONSTANT_FIVE), YELLOW_LIGHT, MAXIMUM_NUMBER_OF_LIGHTS_IN_FIVE_MINUTE_ROW).replace("YYY", "YYR"));
     }
 
     private String generateRowValue(int numberOfLightsOn, String lightColor, int maximumNoOfLightsInRow) {
