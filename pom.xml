@@ -12,6 +12,7 @@
         <java-version>1.8</java-version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <apache.commons.version>3.8.1</apache.commons.version>
+        <pitest-junit5-plugin.version>0.8</pitest-junit5-plugin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -42,6 +43,27 @@
                     <source>${java-version}</source>
                     <target>${java-version}</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.4.3</version>
+                <executions>
+                    <execution>
+                        <id>mutation-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>mutationCoverage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>${pitest-junit5-plugin.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
