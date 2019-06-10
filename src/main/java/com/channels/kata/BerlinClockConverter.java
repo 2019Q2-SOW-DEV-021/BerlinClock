@@ -8,7 +8,7 @@ import java.time.format.DateTimeParseException;
 
 public class BerlinClockConverter {
 
-    public static final String TIME_MUST_BE_IN_THE_FORMAT_HH_MM_SS = "Time must be in the format HH:mm:ss";
+    public static final String TIME_MUST_BE_IN_THE_FORMAT_HH_MM_SS = "Time must be in the format HH:mm:ss or HH:mm";
     public static final String NO_LIGHT = "0";
     public static final int MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW = 4;
     public static final String RED_LIGHT = "R";

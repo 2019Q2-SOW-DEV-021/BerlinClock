@@ -24,7 +24,7 @@ class BerlinClockConverterTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 new BerlinClockConverter(digitalTime));
 
-        assertEquals("Time must be in the format HH:mm:ss", exception.getMessage());
+        assertEquals("Time must be in the format HH:mm:ss or HH:mm", exception.getMessage());
     }
 
     @ParameterizedTest
