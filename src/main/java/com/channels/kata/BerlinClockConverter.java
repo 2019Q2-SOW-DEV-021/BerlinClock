@@ -32,9 +32,9 @@ public class BerlinClockConverter {
     }
 
     private String generateRowValue(int numberOfLightsOn, String lightColor, int maximumNoOfLightsInRow) {
-        StringBuilder hoursRowBuilder = new StringBuilder(StringUtils.repeat(lightColor, numberOfLightsOn));
-        hoursRowBuilder.append(StringUtils.repeat(NO_LIGHT, (maximumNoOfLightsInRow - numberOfLightsOn)));
-        return hoursRowBuilder.toString();
+        StringBuilder rowvalueBuilder = new StringBuilder(StringUtils.repeat(lightColor, numberOfLightsOn));
+        rowvalueBuilder.append(StringUtils.repeat(NO_LIGHT, (maximumNoOfLightsInRow - numberOfLightsOn)));
+        return rowvalueBuilder.toString();
     }
 
     private LocalTime parseDigitalTime(String digitalTime) {
