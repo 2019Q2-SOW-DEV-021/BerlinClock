@@ -9,6 +9,8 @@ import java.time.format.DateTimeParseException;
 public class BerlinClockConverter {
 
     public static final String TIME_MUST_BE_IN_THE_FORMAT_HH_MM_SS = "Time must be in the format HH:mm:ss";
+    public static final String NO_LIGHT = "0";
+    public static final int MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW = 4;
     private BerlinClock berlinClock;
 
     public BerlinClockConverter(String digitalTime) {
@@ -18,11 +20,15 @@ public class BerlinClockConverter {
 
     private void convertDigitalTimeToBerlinTime(LocalTime parsedDigitalTime) {
         berlinClock = new BerlinClock();
-        berlinClock.setSecond((parsedDigitalTime.getSecond() % 2) == 0 ? "Y" : "0");
+        berlinClock.setSecond((parsedDigitalTime.getSecond() % 2) == 0 ? "Y" : NO_LIGHT);
+        berlinClock.setFiveHourRow(generateFiveHourRowValue(parsedDigitalTime));
+    }
+
+    private String generateFiveHourRowValue(LocalTime parsedDigitalTime) {
         final int numberOfHoursLightsOn = parsedDigitalTime.getHour() / 5;
         StringBuilder hoursRowBuilder = new StringBuilder(StringUtils.repeat("R", numberOfHoursLightsOn));
-        hoursRowBuilder.append(StringUtils.repeat("0", 4 - numberOfHoursLightsOn));
-        berlinClock.setFiveHourRow(hoursRowBuilder.toString());
+        hoursRowBuilder.append(StringUtils.repeat(NO_LIGHT, MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW - numberOfHoursLightsOn));
+        return hoursRowBuilder.toString();
     }
 
     private LocalTime parseDigitalTime(String digitalTime) {
