@@ -4,14 +4,21 @@ import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 
 public class BerlinClockConverter {
+
+    public static final String TIME_MUST_BE_IN_THE_FORMAT_HH_MM_SS = "Time must be in the format HH:mm:ss";
+
     public BerlinClockConverter(String digitalTime) {
+        parseDigitalTime(digitalTime);
+    }
+
+    private LocalTime parseDigitalTime(String digitalTime) {
         if (null == digitalTime) {
-            throw new IllegalArgumentException("Please enter valid time");
+            throw new IllegalArgumentException(TIME_MUST_BE_IN_THE_FORMAT_HH_MM_SS);
         }
         try {
-            LocalTime.parse(digitalTime);
+            return LocalTime.parse(digitalTime);
         } catch (DateTimeParseException dateTimeParseException) {
-            throw new IllegalArgumentException("Time must be in the format HH:mm:ss");
+            throw new IllegalArgumentException(TIME_MUST_BE_IN_THE_FORMAT_HH_MM_SS);
         }
     }
 }

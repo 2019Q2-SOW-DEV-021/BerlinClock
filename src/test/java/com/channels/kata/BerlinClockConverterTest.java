@@ -9,13 +9,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @DisplayName("Berlin Clock Converter")
 class BerlinClockConverterTest {
 
+    public static final String TIME_MUST_BE_IN_THE_FORMAT_HH_MM_SS = "Time must be in the format HH:mm:ss";
+
     @Test
     @DisplayName("Test for a null input value")
     public void testBerlinClockConverterToCheckNullInputValue() {
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 new BerlinClockConverter(null));
 
-        assertEquals("Please enter valid time", exception.getMessage());
+        assertEquals(TIME_MUST_BE_IN_THE_FORMAT_HH_MM_SS, exception.getMessage());
     }
 
     @Test
@@ -24,6 +26,6 @@ class BerlinClockConverterTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 new BerlinClockConverter("24:66"));
 
-        assertEquals("Time must be in the format HH:mm:ss", exception.getMessage());
+        assertEquals(TIME_MUST_BE_IN_THE_FORMAT_HH_MM_SS, exception.getMessage());
     }
 }
