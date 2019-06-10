@@ -1,7 +1,6 @@
 package com.channels.kata;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -47,7 +46,7 @@ class BerlinClockConverterTest {
     }
 
     @ParameterizedTest
-    @DisplayName("Test Single hour row value for given input time")
+    @DisplayName("Test Single hour row value for all possible combinations")
     @CsvSource({"00:12:10,0000", "01:02:02,R000", "02:03:12,RR00", "03:24:34,RRR0", "04:32:23,RRRR"})
     public void testBerlinClockConverterForSingleHourRow(String digitalTime, String expectedSingleHourRowValue) {
         BerlinClockConverter berlinClockConverter = new BerlinClockConverter(digitalTime);
@@ -65,13 +64,13 @@ class BerlinClockConverterTest {
 
     }
 
-    @Test
-    @DisplayName("Test Single Minute row value for given time")
-    public void testBerlinClockConverterForSingleMinuteRow() {
-        BerlinClockConverter berlinClockConverter = new BerlinClockConverter("11:00");
+    @ParameterizedTest
+    @DisplayName("Test Single Minute row value for all possible combinations")
+    @CsvSource({"11:00,0000", "01:01,Y000", "02:02,YY00", "03:03,YYY0", "04:04,YYYY"})
+    public void testBerlinClockConverterForSingleMinuteRow(String digitalTime, String expectedSinleMinuteRowValue) {
+        BerlinClockConverter berlinClockConverter = new BerlinClockConverter(digitalTime);
 
-        assertEquals("0000", berlinClockConverter.getBerlinClock().getSingleMinuteRow());
+        assertEquals(expectedSinleMinuteRowValue, berlinClockConverter.getBerlinClock().getSingleMinuteRow());
 
     }
-
 }
