@@ -17,9 +17,7 @@ public class BerlinClockConverter {
 
     private void convertDigitalTimeToBerlinTime(LocalTime parsedDigitalTime) {
         berlinClock = new BerlinClock();
-        if (parsedDigitalTime.getSecond() % 2 == 0) {
-            berlinClock.setSecond("Y");
-        }
+        berlinClock.setSecond((parsedDigitalTime.getSecond() % 2) == 0 ? "Y" : "0");
     }
 
     private LocalTime parseDigitalTime(String digitalTime) {

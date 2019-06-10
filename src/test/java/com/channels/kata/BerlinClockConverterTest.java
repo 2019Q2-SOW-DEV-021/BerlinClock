@@ -34,4 +34,12 @@ class BerlinClockConverterTest {
 
         assertEquals("Y", berlinClockConverter.getBerlinClock().getSecond());
     }
+
+    @Test
+    @DisplayName("Test For Second light Turned On When second is Odd number")
+    public void testBerlinClockConverterForOddSecond() {
+        BerlinClockConverter berlinClockConverter = new BerlinClockConverter("12:11:11");
+
+        assertEquals("0", berlinClockConverter.getBerlinClock().getSecond());
+    }
 }
