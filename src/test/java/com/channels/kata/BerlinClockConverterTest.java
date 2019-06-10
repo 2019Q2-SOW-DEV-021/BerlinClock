@@ -1,6 +1,7 @@
 package com.channels.kata;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -43,6 +44,14 @@ class BerlinClockConverterTest {
         BerlinClockConverter berlinClockConverter = new BerlinClockConverter(digitalTime);
 
         assertEquals(expectedFiveHourRowValue, berlinClockConverter.getBerlinClock().getFiveHourRow());
+    }
+
+    @Test
+    @DisplayName("Test Single hour row value for given input time")
+    public void testBerlinClockConverterForSingleHourRow() {
+        BerlinClockConverter berlinClockConverter = new BerlinClockConverter("10:12:10");
+
+        assertEquals("0000", berlinClockConverter.getBerlinClock().getSingleHourRow());
     }
 
 }

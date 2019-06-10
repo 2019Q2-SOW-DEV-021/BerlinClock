@@ -22,6 +22,10 @@ public class BerlinClockConverter {
         berlinClock = new BerlinClock();
         berlinClock.setSecond((parsedDigitalTime.getSecond() % 2) == 0 ? "Y" : NO_LIGHT);
         berlinClock.setFiveHourRow(generateFiveHourRowValue(parsedDigitalTime));
+        final int numberOfLightsOnSingleHourRow = parsedDigitalTime.getHour() % 5;
+        StringBuilder singleHourRowBuilder = new StringBuilder(StringUtils.repeat("R", numberOfLightsOnSingleHourRow));
+        singleHourRowBuilder.append(StringUtils.repeat(NO_LIGHT, (MAXIMUM_NUMBER_OF_LIGHTS_IN_HOUR_ROW - numberOfLightsOnSingleHourRow)));
+        berlinClock.setSingleHourRow(singleHourRowBuilder.toString());
     }
 
     private String generateFiveHourRowValue(LocalTime parsedDigitalTime) {

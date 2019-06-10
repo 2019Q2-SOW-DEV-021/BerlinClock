@@ -3,6 +3,7 @@ package com.channels.kata.model;
 public class BerlinClock {
     private String second;
     private String fiveHourRow;
+    private String singleHourRow;
 
     public String getSecond() {
         return second;
@@ -18,5 +19,13 @@ public class BerlinClock {
 
     public void setFiveHourRow(String fiveHourRow) {
         this.fiveHourRow = fiveHourRow;
+    }
+
+    public String getSingleHourRow() {
+        return singleHourRow;
+    }
+
+    public void setSingleHourRow(String singleHourRow) {
+        this.singleHourRow = singleHourRow;
     }
 }
