@@ -1,6 +1,7 @@
 package com.channels.kata;
 
 import com.channels.kata.model.BerlinClock;
+import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
@@ -18,6 +19,10 @@ public class BerlinClockConverter {
     private void convertDigitalTimeToBerlinTime(LocalTime parsedDigitalTime) {
         berlinClock = new BerlinClock();
         berlinClock.setSecond((parsedDigitalTime.getSecond() % 2) == 0 ? "Y" : "0");
+        final int numberOfHoursLightsOn = parsedDigitalTime.getHour() / 5;
+        StringBuilder hoursRowBuilder = new StringBuilder(StringUtils.repeat("R", numberOfHoursLightsOn));
+        hoursRowBuilder.append(StringUtils.repeat("0", 4 - numberOfHoursLightsOn));
+        berlinClock.setFiveHourRow(hoursRowBuilder.toString());
     }
 
     private LocalTime parseDigitalTime(String digitalTime) {
