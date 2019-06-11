@@ -52,12 +52,18 @@ Git
 1. Go to project directory
 2. Run `mvn test` under lifecycle menu
 
-**Code coverage and Mutation coverage Report**
-Application uses pitest dependency to check code coverage and mutation testing coverage
+**Code coverage and Mutation coverage Report**\
+Application uses pitest mutation testing coverage and Jacoco for code coverage
+
+**Mutation coverage**
 1. Open the command prompt / terminal from project directory 
 2. Run `mvn pitest:mutationCoverage` or `mvn clean install`
 3. Go to target -> pit-reports -> directory in the name of YYYYMMDDHHMI -> index.html
 4. Code coverage and mutation coverage report will be displayed as summary and package wise report
+
+**Jacoco report**
+1. Run mvn clean install
+2. mvn jacoco:report
 
 ###Run Application
 #### IDE
