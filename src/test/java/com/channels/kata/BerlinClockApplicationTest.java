@@ -33,19 +33,20 @@ public class BerlinClockApplicationTest {
     }
 
     @Test
-    @DisplayName("Test Berlin clock for given digital time")
-    public void testBerlinClockApplicationForGivenDigitalTime() {
+    @DisplayName("Test Berlin Clock for given time")
+    public void testBerlinClockApplicationForGivenTime() {
         ByteArrayOutputStream consoleOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(consoleOutputStream));
 
-        new BerlinClockApplication().launchBerlinClockConverter("02:45:54");
+        BerlinClockApplication.main(new String[]{"02:45:54"});
 
         BerlinClock berlinClock = new BerlinClock();
         berlinClock.setSecond("Y");
         berlinClock.setFiveHourRow("0000");
         berlinClock.setSingleHourRow("RR00");
         berlinClock.setFiveMinuteRow("YYRYYRYYR00");
-        berlinClock.setSingleMinuteRow("0000\n");
+        berlinClock.setSingleMinuteRow("0000");
         Assertions.assertEquals(berlinClock.toString(), consoleOutputStream.toString());
     }
+
 }
