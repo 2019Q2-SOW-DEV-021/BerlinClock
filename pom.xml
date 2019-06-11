@@ -12,6 +12,7 @@
         <java-version>1.8</java-version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <apache.commons.version>3.8.1</apache.commons.version>
+        <exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
         <pitest-junit5-plugin.version>0.8</pitest-junit5-plugin.version>
     </properties>
     <dependencies>
@@ -42,6 +43,22 @@
                 <configuration>
                     <source>${java-version}</source>
                     <target>${java-version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>com.channels.kata.BerlinClockApplication</mainClass>
+                    <arguments>12:11:11</arguments>
                 </configuration>
             </plugin>
             <plugin>
