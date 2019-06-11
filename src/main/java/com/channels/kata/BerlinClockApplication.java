@@ -11,6 +11,6 @@ public class BerlinClockApplication {
 
     public void launchBerlinClockConverter(String digitalTime) {
         BerlinClockConverter berlinClockConverter = new BerlinClockConverter(digitalTime);
-        System.out.print(berlinClockConverter.getBerlinClock().toString());
+        System.out.println(berlinClockConverter.getBerlinClock().toString());
     }
 }

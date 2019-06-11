@@ -45,7 +45,7 @@ public class BerlinClockApplicationTest {
         berlinClock.setFiveHourRow("0000");
         berlinClock.setSingleHourRow("RR00");
         berlinClock.setFiveMinuteRow("YYRYYRYYR00");
-        berlinClock.setSingleMinuteRow("0000");
+        berlinClock.setSingleMinuteRow("0000\n");
         Assertions.assertEquals(berlinClock.toString(), consoleOutputStream.toString());
     }
 }
