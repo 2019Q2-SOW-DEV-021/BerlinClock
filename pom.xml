@@ -13,6 +13,7 @@
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <apache.commons.version>3.8.1</apache.commons.version>
         <exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
+        <pitest.version>1.4.3</pitest.version>
         <pitest-junit5-plugin.version>0.8</pitest-junit5-plugin.version>
     </properties>
     <dependencies>
@@ -64,7 +65,7 @@
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
-                <version>1.4.3</version>
+                <version>${pitest.version}</version>
                 <executions>
                     <execution>
                         <id>mutation-report</id>

@@ -56,7 +56,7 @@ Git
 Application uses pitest dependency to check code coverage and mutation testing coverage
 1. Open the command prompt / terminal from project directory 
 2. Run `mvn pitest:mutationCoverage` or `mvn clean install`
-3. Go to target -> pit-reports -> directory in the name of YYYYMMddHHmm -> index.html
+3. Go to target -> pit-reports -> directory in the name of YYYYMMDDHHMI -> index.html
 4. Code coverage and mutation coverage report will be displayed as summary and package wise report
 
 ###Run Application
